@@ -1,0 +1,63 @@
+import java.util.*;
+
+public class JawabanSoalBagian2 {
+    public static void main(String[] args) {
+        System.out.println("===== JAWABAN DAN PROSES PENGERJAAN SOAL NOMOR 2, 3, dan 4 =====");
+
+        
+        ArrayList<Integer> tinggiA = new ArrayList<>(Arrays.asList(168, 170, 165, 168, 172, 170, 169, 165, 171, 166));
+        ArrayList<Integer> beratA  = new ArrayList<>(Arrays.asList(50, 60, 56, 55, 60, 70, 66, 56, 72, 56));
+        ArrayList<Integer> tinggiB = new ArrayList<>(Arrays.asList(170, 167, 165, 166, 168, 175, 172, 171, 168, 169));
+        ArrayList<Integer> beratB  = new ArrayList<>(Arrays.asList(66, 60, 59, 58, 58, 71, 68, 68, 65, 60));
+
+        System.out.println("\n[2.a] Data tinggi dan berat telah disimpan dalam ArrayList secara terpisah.");
+
+       
+        Collections.sort(tinggiB); 
+
+        System.out.println("\n[2.b] Jumlah pemain Tim B dengan tinggi:");
+        int count168 = Collections.frequency(tinggiB, 168);
+        int count160 = Collections.frequency(tinggiB, 160);
+        System.out.println("    Tinggi 168 cm = " + count168 + " pemain");
+        System.out.println("    Tinggi 160 cm = " + count160 + " pemain");
+
+
+        Collections.sort(beratA);
+
+        System.out.println("\n[2.c] Jumlah pemain Tim A dengan berat:");
+        int count56 = Collections.frequency(beratA, 56);
+        int count53 = Collections.frequency(beratA, 53);
+        System.out.println("    Berat 56 kg = " + count56 + " pemain");
+        System.out.println("    Berat 53 kg = " + count53 + " pemain");
+
+    
+        boolean adaTinggiSama = !Collections.disjoint(tinggiA, tinggiB);
+        boolean adaBeratSama  = !Collections.disjoint(beratA, beratB);
+
+        System.out.println("\n[2.d] Apakah ada tinggi/berat yang sama antara Tim A dan Tim B?");
+        System.out.println("    Tinggi sama? " + (adaTinggiSama ? "YA" : "TIDAK"));
+        System.out.println("    Berat sama?  " + (adaBeratSama  ? "YA" : "TIDAK"));
+
+    
+        System.out.println("\n[3] Implementasi Binary Search:");
+
+        Collections.sort(tinggiB);
+        int posisiTinggi168 = Collections.binarySearch(tinggiB, 168);
+        int posisiTinggi160 = Collections.binarySearch(tinggiB, 160);
+
+        System.out.println("    Posisi tinggi 168 di Tim B: " + (posisiTinggi168 >= 0 ? posisiTinggi168 : "Tidak ditemukan"));
+        System.out.println("    Posisi tinggi 160 di Tim B: " + (posisiTinggi160 >= 0 ? posisiTinggi160 : "Tidak ditemukan"));
+
+        Collections.sort(beratA);
+        int posisiBerat56 = Collections.binarySearch(beratA, 56);
+        int posisiBerat53 = Collections.binarySearch(beratA, 53);
+
+        System.out.println("    Posisi berat 56 di Tim A: " + (posisiBerat56 >= 0 ? posisiBerat56 : "Tidak ditemukan"));
+        System.out.println("    Posisi berat 53 di Tim A: " + (posisiBerat53 >= 0 ? posisiBerat53 : "Tidak ditemukan"));
+
+        
+        System.out.println("\n[4] Menentukan apakah ada anggota yang memiliki nilai tinggi atau berat yang sama:");
+        System.out.println("    Tinggi sama antara A dan B: " + (adaTinggiSama ? "YA" : "TIDAK"));
+        System.out.println("    Berat sama antara A dan B : " + (adaBeratSama  ? "YA" : "TIDAK"));
+    }
+}
